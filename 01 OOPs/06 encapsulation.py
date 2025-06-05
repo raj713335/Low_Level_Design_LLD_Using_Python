@@ -24,6 +24,7 @@ class BankAccount:
         else:
             print("Invalid deposit amount")
 
+
 class PaymentProcessor:
     def __init__(self, card_number, amount):
         self.__card_number = self.__mask_card_Number(card_number)
@@ -46,4 +47,3 @@ if __name__ == "__main__":
 
     payment = PaymentProcessor("123456789017", 250)
     payment.process_payment()
-
