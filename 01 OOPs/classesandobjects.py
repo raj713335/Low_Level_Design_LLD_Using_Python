@@ -13,10 +13,11 @@ class Car:
         print(f"Car Model: {self.model}")
         print(f"Car Year: {self.year}")
 
+
 car1 = Car("Red", "Maruti", "Alto", "2015")
 car2 = Car("Grey", "TATA", "Altroz", "2023")
 
+# Displaying information of each car
 car1.display_info()
-
 print("------------")
 car2.display_info()
