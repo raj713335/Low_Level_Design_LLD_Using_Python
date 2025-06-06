@@ -47,6 +47,7 @@ class Circle(Shape):
 
 class Triangle(Shape):
     # Implementation of Triangle
+    pass
 
 
 if __name__ == "__main__":
