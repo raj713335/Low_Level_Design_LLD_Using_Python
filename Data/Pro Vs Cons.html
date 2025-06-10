@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype Design Pattern: Pros vs. Cons</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+        }
+        /* Custom scrollbar for better aesthetics, though not strictly needed for this content length */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0; /* Light gray track */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8; /* Medium gray thumb */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b; /* Darker gray on hover */
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 flex items-center justify-center min-h-screen">
+
+    <div class="container mx-auto bg-white shadow-2xl overflow-hidden max-w-6xl w-full">
+        <!-- Header Section -->
+        <div class="bg-gradient-to-r from-teal-600 to-cyan-700 text-white p-6 md:p-8 text-center">
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-2 leading-tight">
+                <span class="block text-amber-300 mb-2"><i class="fa-solid fa-robot"></i></span> Prototype Design Pattern: Pros vs. Cons
+            </h1>
+            <p class="text-lg md:text-xl font-light opacity-90">Creating Families of Related Objects</p>
+        </div>
+
+        <!-- Main Content: Pros and Cons Columns -->
+        <div class="flex flex-col md:flex-row gap-6 p-6 md:p-10">
+
+            <!-- Pros Section -->
+            <div class="flex-1 bg-gradient-to-br from-green-50 to-green-100 border border-green-200 p-6 shadow-md hover:shadow-lg transition-shadow duration-300 transform hover:-translate-y-1">
+                <h2 class="text-2xl md:text-3xl font-bold text-green-700 mb-6 flex items-center">
+                    <svg class="w-8 h-8 mr-3 text-green-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    Pros
+                </h2>
+                <ul class="space-y-5 text-gray-700 text-base md:text-lg">
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 text-green-500 mt-1 mr-3">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        </span>
+                        <div class="flex-1">
+                            <span class="font-bold">Reduces the need for subclassing:</span> You can create new objects by copying existing ones, avoiding the need for many subclasses.
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 text-green-500 mt-1 mr-3">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        </span>
+                        <div class="flex-1">
+                            <span class="font-bold">Hides the complexity of object creation:</span> Clients can clone objects without knowing the details of their construction.
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 text-green-500 mt-1 mr-3">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        </span>
+                        <div class="flex-1">
+                            <span class="font-bold">Speeds up the instantiation of complex objects:</span> Cloning is often faster than constructing a new object from scratch, especially for resource-intensive objects.
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 text-green-500 mt-1 mr-3">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        </span>
+                        <div class="flex-1">
+                            <span class="font-bold">Allows adding and removing objects at runtime:</span> New prototypes can be registered and cloned as needed, providing flexibility.
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 text-green-500 mt-1 mr-3">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        </span>
+                        <div class="flex-1">
+                            <span class="font-bold">Useful for objects that are expensive to create:</span> Especially when object creation involves a costly setup or configuration process.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Cons Section -->
+            <div class="flex-1 bg-gradient-to-br from-red-50 to-red-100 border border-red-200 p-6 shadow-md hover:shadow-lg transition-shadow duration-300 transform hover:-translate-y-1">
+                <h2 class="text-2xl md:text-3xl font-bold text-red-700 mb-6 flex items-center">
+                    <svg class="w-8 h-8 mr-3 text-red-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+                    Cons
+                </h2>
+                <ul class="space-y-5 text-gray-700 text-base md:text-lg">
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 text-red-500 mt-1 mr-3">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+                        </span>
+                        <div class="flex-1">
+                            <span class="font-bold">Cloning complex objects with circular references can be tricky:</span> Special care is needed to avoid infinite loops or errors during cloning.
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 text-red-500 mt-1 mr-3">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+                        </span>
+                        <div class="flex-1">
+                            <span class="font-bold">Requires implementing a cloning method for each prototype:</span> Every class that needs to be cloned must provide its own cloning logic.
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 text-red-500 mt-1 mr-3">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+                        </span>
+                        <div class="flex-1">
+                            <span class="font-bold">Deep copy vs. shallow copy issues can arise:</span> Care must be taken to ensure the correct type of copy is made, especially for objects with references to other objects.
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 text-red-500 mt-1 mr-3">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+                        </span>
+                        <div class="flex-1">
+                            <span class="font-bold">Not always clear when to use:</span> Sometimes using constructors or factory methods is simpler and more appropriate than cloning.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
