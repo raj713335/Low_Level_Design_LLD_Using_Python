@@ -1,12 +1,13 @@
-import ParkingSpot
-import Ticket
-import SpotType
-import Vehicle
+from ParkingSpot import ParkingSpot
+from Ticket import Ticket
+from SpotType import SpotType
+from Vehicle import Vehicle
 
-class parkingLot:
+
+class ParkingLot:
     def __init__(self):
         self.spots: list[ParkingSpot] = []
-        self.active_tickets: dict[str, Ticket] ={}
+        self.active_tickets: dict[str, Ticket] = {}
 
     def add_spot(self, spot: ParkingSpot):
         self.spots.append(spot)
@@ -26,13 +27,14 @@ class parkingLot:
         spot.assign_vehicle(vehicle)
         ticket = Ticket(vehicle, spot)
         self.active_tickets[ticket.ticket_id] = ticket
+        return ticket
 
     def unpark_vehicle(self, ticket_id: str):
         ticket = self.active_tickets.get(ticket_id)
         if not ticket:
             raise Exception("Invalid ticket Id")
         ticket.close()
-        free = ticket.get_fee()
-        ticket.spot_remove_vehicle()
+        free = ticket.get_fees()
+        ticket.spot.remove_vehicle()
         del self.active_tickets[ticket_id]
         return free

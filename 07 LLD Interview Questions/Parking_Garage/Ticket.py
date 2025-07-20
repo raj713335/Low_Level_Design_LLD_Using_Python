@@ -1,5 +1,5 @@
 import Vehicle
-import ParkingSpot
+from ParkingSpot import ParkingSpot
 import uuid
 from datetime import datetime
 
